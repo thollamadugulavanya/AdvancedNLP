@@ -16,13 +16,13 @@ auth.set_access_token(access_key, access_secret)
  
 api = tweepy.API(auth,wait_on_rate_limit=True)
  
-csvFile = open('C:\\Users\\tholl\\Desktop\\AV.NLP\\Iphone14.csv', 'w')
+csvFile = open('C:\\Users\\tholl\\Desktop\\AV.NLP\\fridayfeeling.csv', 'w')
 csvWriter = csv.writer(csvFile)
 print("Here") 
-search_words = "#Iphone14"      # enter your words
+search_words = "#fridayfeeling"      # enter your words
 #new_search = search_words + "retweets"
  
 for tweet in tweepy.Cursor(api.search_tweets,q=search_words,count=100,
                            lang="en",
-                           since_id=0).items(100):
+                           since_id=0).items(1000):
     csvWriter.writerow([tweet.created_at, tweet.text.encode('utf-8'),tweet.user.screen_name.encode('utf-8'), tweet.user.location.encode('utf-8')])
